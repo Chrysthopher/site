@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Pessoal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #87CEEB; /* Azul Celeste */
+        }
+
+        .navbar {
+            height: 60px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 4px 2px -2px gray;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 18px;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        .content {
+            margin-top: 60px; /* Espaço para a navbar */
+            padding: 20px;
+            text-align: center;
+            width: 75%;
+            max-width: 1200px; /* Limita a largura máxima para telas grandes */
+            margin: 60px auto 0 auto; /* Centraliza o conteúdo e adiciona espaço no topo */
+        }
+
+        .video-box {
+            margin: 20px;
+            border: 2px solid #ddd;
+            padding: 10px;
+            max-width: 100%; /* Ajusta para não exceder a largura da tela */
+            text-align: center;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .video-box img {
+            width: 100%;
+            height: auto;
+        }
+
+        .video-box:hover {
+            border-color: #aaa;
+        }
+
+        #video-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #video-container video {
+            width: 80%;
+            height: auto;
+        }
+
+        #close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid #ddd;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Charlotte</a>
+        <a href="Kono.html">Kono Subarashii Sekai ni Shukufuku o!</a>
+        <a href="Frieren.html">Frieren e a Jornada para o Além</a>
+        <a href="Chuunibyou.html">Chuunibyou Demo Koi ga Shitai</a>
+        <a href="Sword.html">Sword Art Online</a>
+    </div>
+
+    <div class="content">
+        <h1>PRIMEIRA TEMPORADA</h1>
+
+        <div class="video-box" onclick="window.open('https://youtu.be/s-G9k-ZOsQ4?si=xSRDPbOMrOeIUlSt')">
+            <img src="imagens/Kono.png" alt="Vídeo do YouTube">
+            <h2>Kono Subarashii Sekai ni Shukufuku o!</h2>
+            <p>Após um acidente de trânsito, a breve e desapontadora vida de Kazuma Sato deveria ter acabado, mas ele acorda e vê uma belíssima garota diante dele. Ela diz ser Aqua, uma deusa, e lhe pergunta se ele gostaria de ir para outro mundo, levando consigo apenas uma coisa deste mundo. Kazuma decide levar a própria deusa consigo, e eles são transportados para um mundo de fantasia cheio de aventura, dominado por um rei-demônio. Agora Kazuma quer apenas viver em paz, mas Aqua quer resolver vários dos problemas deste novo mundo, e o rei-demônio não vai ignorá-los por muito tempo...</p>
+        </div>
+
+    </div>
+
+    <div id="video-container">
+        <video controls></video>
+        <span id="close-btn">&times;</span>
+    </div>
+
+    <script>
+        const videoContainer = document.getElementById('video-container');
+        const videoElement = videoContainer.querySelector('video');
+        const closeBtn = document.getElementById('close-btn');
+
+        document.querySelectorAll('.video-box').forEach(box => {
+            box.addEventListener('click', function() {
+                const videoSrc = this.getAttribute('data-video-src');
+                videoElement.src = videoSrc;
+                videoContainer.style.display = 'flex'; 
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            videoContainer.style.display = 'none';
+            videoElement.pause();  
+            videoElement.src = '';  
+        });
+    </script>
+
+</body>
+
+
+<footer>
+    &copy; 2024 Chrysthopher Siddhartha Cardoso Biqueri. Todos os direitos reservados.
+    </footer>
+</html>
